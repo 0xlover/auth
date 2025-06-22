@@ -695,7 +695,7 @@ func (h *Handlers) Change2FAConfirm(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// Generating TOTP backup codes
-	codes, err := h.store.GenerateBackupCodes(id)
+	codes, err := h.store.GenerateBackupCodes(id, args.TotpBackupLenght)
 	if err != nil {
 		fmt.Println("Error generating TOTP backup codes", err)
 		utilities.Reply(w, http.StatusInternalServerError, "internal server error", nil, false)

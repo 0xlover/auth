@@ -27,13 +27,13 @@ Use **flags**(prioritized) and/or **environment variables**(find them in .env.ex
 you@computer$ auth -h
 ```
 ```
-Usage: auth [--port] [--prefix] [--rate-limit] [--extra-rate-limit] [--pepper] [--bcrypt-cost] [--lock-time] [--attempts] [--jwt-secret] [--jwt-expiration] [--database] [--journal-mode] [--totp] [--totp-skew] [--totp-algorithm] [--smtp] [--smtp-address] [--smtp-port] [--smtp-user] [--smtp-password] [--smtp-from] [--origins] [--easter-egg] [--version]
+Usage: auth [--port] [--prefix] [--rate-limit] [--extra-limit] [--pepper] [--bcrypt-cost] [--lock-time] [--attempts] [--jwt-secret] [--jwt-expiration] [--database] [--journal-mode] [--totp] [--totp-skew] [--totp-algorithm] [--totp-backup-lenght] [--smtp] [--smtp-address] [--smtp-port] [--smtp-user] [--smtp-password] [--smtp-from] [--origins] [--easter-egg] [--version]
 
 Options:
   --port, -p             specifies the port to bind to [default: 6900, env: PORT]
   --prefix               speicifes a prefix [default: /api, env: PREFIX]
-  --rate-limit, -r  specifies the base rate limit(1 hour window) [default: 60, env: RATE_LIMIT]
-  --extra-limit, -e  specifies the extra rate limit for sensitive endpoints(1 hour window) [default: 10, env: EXTRA_LIMIT]
+  --rate-limit, -r       specifies the base rate limit(1 hour window) [default: 60, env: RATE_LIMIT]
+  --extra-limit, -e      specifies the rate limit for sensitive endpoints(1 hour window) [default: 10, env: EXTRA_LIMIT]
   --pepper               specifies a password pepper [env: PEPPER]
   --bcrypt-cost          specifies the bcrypt cost [default: 10, env: COST]
   --lock-time, -l        specifies the lock time after too many failed attempts in hours [default: 6, env: LOCK_TIME]
@@ -45,6 +45,7 @@ Options:
   --totp, -t             specifies whether to enable 2FA using TOTP or not [default: false, env: ENABLE_TOTP]
   --totp-skew            specifies the TOTP validation skew [default: 0, env: TOTP_SKEW]
   --totp-algorithm       specifies the TOTP algorithm to use [default: 1, env: TOTP_ALGORITHM]
+  --totp-backup-lenght   specifies the TOTP backup codes lenght [default: 8, env: TOTP_BACKUP_LENGHT]
   --smtp, -s             specifies whether to enable emails using SMTP [default: false, env: ENABLE_SMTP]
   --smtp-address         specifies the SMTP server address [env: SMTP_ADDRESS]
   --smtp-port            specifies the SMTP server port [default: 25, env: SMTP_PORT]

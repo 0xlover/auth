@@ -24,30 +24,31 @@ import (
 )
 
 var args struct {
-	Port          int    `arg:"-p,--port,env:PORT" default:"6900" placeholder:"" help:"specifies the port to bind to"`
-	Prefix        string `arg:"--prefix,env:PREFIX" default:"/api" placeholder:"" help:"speicifes a prefix"`
-	RateLimit     int    `arg:"-r,--rate-limit,env:RATE_LIMIT" default:"60" placeholder:"" help:"specifies the base rate limit(1 hour window)"`
-	ExtraLimit    int    `arg:"-e,--extra-limit,env:EXTRA_LIMIT" default:"10" placeholder:"" help:"specifies the rate limit for sensitive endpoints(1 hour window)"`
-	Pepper        string `arg:"--pepper,env:PEPPER" default:"" placeholder:"" help:"specifies a password pepper"`
-	BcryptCost    int    `arg:"--bcrypt-cost,env:COST" default:"10" placeholder:"" help:"specifies the bcrypt cost"`
-	LockTime      int    `arg:"-l,--lock-time,env:LOCK_TIME" default:"6" placeholder:"" help:"specifies the lock time after too many failed attempts in hours"`
-	LockAttempts  int    `arg:"-a,--attempts,env:LOCK_ATTEMPTS" default:"9" placeholder:"" help:"specifies the maximum number of failed attempts before being locked out"`
-	JwtSecret     string `arg:"-c,--jwt-secret,env:JWT_SECRET" default:"d3f4ult_jwt$$_secret_cha:)nge_me?" placeholder:"" help:"specifies the JWT secret"`
-	JwtExpiration int    `arg:"-x,--jwt-expiration,env:JWT_EXPIRATION" default:"24" placeholder:"" help:"specifies the expiration time of JWTs in hours"`
-	DatabasePath  string `arg:"-d,--database,env:DATABASE_PATH" default:"./auth.db" placeholder:"" help:"specifies the database"`
-	JournalMode   string `arg:"-j,--journal-mode,env:JOURNAL_MODE" default:"DELETE" placeholder:"" help:"specifies the sqlite3 database journal mode"`
-	EnableTotp    bool   `arg:"-t,--totp,env:ENABLE_TOTP" default:"false" placeholder:"" help:"specifies whether to enable 2FA using TOTP or not"`
-	TotpSkew      uint   `arg:"--totp-skew,env:TOTP_SKEW" default:"0" placeholder:"" help:"specifies the TOTP validation skew"`
-	TotpAlgorithm string `arg:"--totp-algorithm,env:TOTP_ALGORITHM" default:"1" placeholder:"" help:"specifies the TOTP algorithm to use"`
-	EnableSmtp    bool   `arg:"-s,--smtp,env:ENABLE_SMTP" default:"false" placeholder:"" help:"specifies whether to enable emails using SMTP"`
-	SmtpAddress   string `arg:"--smtp-address,env:SMTP_ADDRESS" placeholder:"" help:"specifies the SMTP server address"`
-	SmtpPort      int    `arg:"--smtp-port,env:SMTP_PORT" default:"25"  placeholder:"" help:"specifies the SMTP server port"`
-	SmtpUser      string `arg:"--smtp-user,env:SMTP_USER" default:"" placeholder:"" help:"specifies the SMTP server user"`
-	SmtpPassword  string `arg:"--smtp-password,env:SMTP_PASSWORD" default:"" placeholder:"" help:"specifies the SMTP server password"`
-	SmtpFrom      string `arg:"--smtp-from,env:SMTP_FROM" placeholder:"" help:"specifies the SMTP from address"`
-	CorsOrigins   string `arg:"-o,--origins,env:CORS_ORIGINS" default:"" placeholder:"" help:"specifies the CORS origins as a comma separated list"`
-	EasterEgg     bool   `arg:"-g,--easter-egg,env:EASTER_EGG" default:"false" placeholder:"" help:"specifies whether to register the easter egg endpoint"`
-	Version       bool   `arg:"-v,--version" help:"prints auth's version and exit"`
+	Port             int    `arg:"-p,--port,env:PORT" default:"6900" placeholder:"" help:"specifies the port to bind to"`
+	Prefix           string `arg:"--prefix,env:PREFIX" default:"/api" placeholder:"" help:"speicifes a prefix"`
+	RateLimit        int    `arg:"-r,--rate-limit,env:RATE_LIMIT" default:"60" placeholder:"" help:"specifies the base rate limit(1 hour window)"`
+	ExtraLimit       int    `arg:"-e,--extra-limit,env:EXTRA_LIMIT" default:"10" placeholder:"" help:"specifies the rate limit for sensitive endpoints(1 hour window)"`
+	Pepper           string `arg:"--pepper,env:PEPPER" default:"" placeholder:"" help:"specifies a password pepper"`
+	BcryptCost       int    `arg:"--bcrypt-cost,env:COST" default:"10" placeholder:"" help:"specifies the bcrypt cost"`
+	LockTime         int    `arg:"-l,--lock-time,env:LOCK_TIME" default:"6" placeholder:"" help:"specifies the lock time after too many failed attempts in hours"`
+	LockAttempts     int    `arg:"-a,--attempts,env:LOCK_ATTEMPTS" default:"9" placeholder:"" help:"specifies the maximum number of failed attempts before being locked out"`
+	JwtSecret        string `arg:"-c,--jwt-secret,env:JWT_SECRET" default:"d3f4ult_jwt$$_secret_cha:)nge_me?" placeholder:"" help:"specifies the JWT secret"`
+	JwtExpiration    int    `arg:"-x,--jwt-expiration,env:JWT_EXPIRATION" default:"24" placeholder:"" help:"specifies the expiration time of JWTs in hours"`
+	DatabasePath     string `arg:"-d,--database,env:DATABASE_PATH" default:"./auth.db" placeholder:"" help:"specifies the database"`
+	JournalMode      string `arg:"-j,--journal-mode,env:JOURNAL_MODE" default:"DELETE" placeholder:"" help:"specifies the sqlite3 database journal mode"`
+	EnableTotp       bool   `arg:"-t,--totp,env:ENABLE_TOTP" default:"false" placeholder:"" help:"specifies whether to enable 2FA using TOTP or not"`
+	TotpSkew         uint   `arg:"--totp-skew,env:TOTP_SKEW" default:"0" placeholder:"" help:"specifies the TOTP validation skew"`
+	TotpAlgorithm    string `arg:"--totp-algorithm,env:TOTP_ALGORITHM" default:"1" placeholder:"" help:"specifies the TOTP algorithm to use"`
+	TotpBackupLenght int    `arg:"--totp-backup-lenght,env:TOTP_BACKUP_LENGHT" default:"8" placeholder:"" help:"specifies the TOTP backup codes lenght"`
+	EnableSmtp       bool   `arg:"-s,--smtp,env:ENABLE_SMTP" default:"false" placeholder:"" help:"specifies whether to enable emails using SMTP"`
+	SmtpAddress      string `arg:"--smtp-address,env:SMTP_ADDRESS" placeholder:"" help:"specifies the SMTP server address"`
+	SmtpPort         int    `arg:"--smtp-port,env:SMTP_PORT" default:"25"  placeholder:"" help:"specifies the SMTP server port"`
+	SmtpUser         string `arg:"--smtp-user,env:SMTP_USER" default:"" placeholder:"" help:"specifies the SMTP server user"`
+	SmtpPassword     string `arg:"--smtp-password,env:SMTP_PASSWORD" default:"" placeholder:"" help:"specifies the SMTP server password"`
+	SmtpFrom         string `arg:"--smtp-from,env:SMTP_FROM" placeholder:"" help:"specifies the SMTP from address"`
+	CorsOrigins      string `arg:"-o,--origins,env:CORS_ORIGINS" default:"" placeholder:"" help:"specifies the CORS origins as a comma separated list"`
+	EasterEgg        bool   `arg:"-g,--easter-egg,env:EASTER_EGG" default:"false" placeholder:"" help:"specifies whether to register the easter egg endpoint"`
+	Version          bool   `arg:"-v,--version" help:"prints auth's version and exit"`
 }
 
 //go:embed reference/openapi.yaml
@@ -156,7 +157,7 @@ func main() {
 			r.Get("/openapi", handlers.OpenAPI)
 			// Easter egg
 			if args.EasterEgg {
-				r.Method("AUTH", "/invite", http.HandlerFunc(handlers.auth))
+				r.Method("BASED", "/invite", http.HandlerFunc(handlers.auth))
 			}
 		})
 		// Protected

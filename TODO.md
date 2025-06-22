@@ -1,5 +1,4 @@
 # TODO
-Option to specify TOTP backup codes lenght
 Option to hash TOTP secret and backup codes
 Complete coverage of unit testing with mock in memory database
 Auditing with audit/ scripts

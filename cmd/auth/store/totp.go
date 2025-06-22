@@ -59,14 +59,14 @@ func (s *Store) NewTOTP(id int, secret string) error {
 }
 
 // Generates a new set of backup codes
-func (s *Store) GenerateBackupCodes(id int) ([]string, error) {
+func (s *Store) GenerateBackupCodes(id int, lenght int) ([]string, error) {
 	codes := make([]string, 8)
 	for i := 0; i < len(codes); i++ {
-		codeBytes := make([]byte, 8)
+		codeBytes := make([]byte, lenght)
 		if _, err := rand.Read(codeBytes); err != nil {
 			return []string{}, err
 		}
-		codes[i] = base32.StdEncoding.EncodeToString(codeBytes)[:8]
+		codes[i] = base32.StdEncoding.EncodeToString(codeBytes)[:lenght]
 	}
 	return codes, nil
 }
