@@ -56,7 +56,7 @@ var embedded embed.FS
 func init() {
 	// Loading enviroment variables 🌹
 	if err := godotenv.Load(); err != nil {
-		fmt.Println("Error loading environment variables from")
+		fmt.Println("No environment variables file found in this directory!")
 	}
 }
 
