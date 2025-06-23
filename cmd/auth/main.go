@@ -40,6 +40,7 @@ var args struct {
 	TotpSkew         uint   `arg:"--totp-skew,env:TOTP_SKEW" default:"0" placeholder:"" help:"specifies the TOTP validation skew"`
 	TotpAlgorithm    string `arg:"--totp-algorithm,env:TOTP_ALGORITHM" default:"1" placeholder:"" help:"specifies the TOTP algorithm to use"`
 	TotpBackupLenght int    `arg:"--totp-backup-lenght,env:TOTP_BACKUP_LENGHT" default:"8" placeholder:"" help:"specifies the TOTP backup codes lenght"`
+	TotpBackupNumber int    `arg:"--totp-backup-number,env:TOTP_BACKUP_NUMBER" default:"12" placeholder:"" help:"specifies the TOTP backup codes number"`
 	EnableSmtp       bool   `arg:"-s,--smtp,env:ENABLE_SMTP" default:"false" placeholder:"" help:"specifies whether to enable emails using SMTP"`
 	SmtpAddress      string `arg:"--smtp-address,env:SMTP_ADDRESS" placeholder:"" help:"specifies the SMTP server address"`
 	SmtpPort         int    `arg:"--smtp-port,env:SMTP_PORT" default:"25"  placeholder:"" help:"specifies the SMTP server port"`

@@ -396,6 +396,12 @@ func (h *Handlers) RecoveryConfirm(w http.ResponseWriter, r *http.Request) {
 		utilities.Reply(w, http.StatusConflict, "email already exists", nil, false)
 		return
 	}
+	// Is the account 2FA disabled?
+	if !account.TOTP {
+		fmt.Println("Warning someone is likely penetration testing", "2FA already disabled")
+		utilities.Reply(w, http.StatusUnauthorized, "2FA already disabled", nil, false)
+		return
+	}
 	// Is the email verification code valid?
 	valid, err := h.store.IsEmailVerificationCodeValid(account.ID, payload.Code)
 	if err != nil {
@@ -450,7 +456,7 @@ func (h *Handlers) RecoveryTOTP(w http.ResponseWriter, r *http.Request) {
 	}
 	// Is the account 2FA disabled?
 	if !account.TOTP {
-		fmt.Println("Warning someone is likely penetration testing")
+		fmt.Println("Warning someone is likely penetration testing", "2FA already disabled")
 		utilities.Reply(w, http.StatusUnauthorized, "2FA already disabled", nil, false)
 		return
 	}
@@ -628,7 +634,7 @@ func (h *Handlers) Change2FA(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// Generating the TOTP secret and QR code
-	secret, QR, err := h.store.GenerateTOTP("auth Amene", account.Email, args.TotpAlgorithm)
+	secret, QR, err := h.store.GenerateTOTP("auth", account.Email, args.TotpAlgorithm)
 	if err != nil {
 		fmt.Println("Error generating TOTP", err)
 		utilities.Reply(w, http.StatusInternalServerError, "internal server error", nil, false)
@@ -679,7 +685,7 @@ func (h *Handlers) Change2FAConfirm(w http.ResponseWriter, r *http.Request) {
 	}
 	// Is the account 2FA enabled?
 	if account.TOTP {
-		fmt.Println("Warning someone is likely penetration testing")
+		fmt.Println("Warning someone is likely penetration testing", "2FA already enabled")
 		utilities.Reply(w, http.StatusUnsupportedMediaType, "2FA already enabled", nil, false)
 		return
 	}
@@ -695,7 +701,7 @@ func (h *Handlers) Change2FAConfirm(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// Generating TOTP backup codes
-	codes, err := h.store.GenerateBackupCodes(id, args.TotpBackupLenght)
+	codes, err := h.store.GenerateBackupCodes(id, args.TotpBackupLenght, args.TotpBackupNumber)
 	if err != nil {
 		fmt.Println("Error generating TOTP backup codes", err)
 		utilities.Reply(w, http.StatusInternalServerError, "internal server error", nil, false)

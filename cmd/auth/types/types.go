@@ -51,7 +51,7 @@ type RecoveryConfirmPayload struct {
 
 type RecoveryTOTPPayload struct {
 	Email string `json:"email" validate:"required,email"`
-	Code  string `json:"code" validate:"required,alphanum,uppercase,len=8"`
+	Code  string `json:"code" validate:"required,alphanum,uppercase"`
 }
 
 type ChangeEmailPayload struct {

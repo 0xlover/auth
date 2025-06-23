@@ -59,8 +59,8 @@ func (s *Store) NewTOTP(id int, secret string) error {
 }
 
 // Generates a new set of backup codes
-func (s *Store) GenerateBackupCodes(id int, lenght int) ([]string, error) {
-	codes := make([]string, 8)
+func (s *Store) GenerateBackupCodes(id int, lenght, number int) ([]string, error) {
+	codes := make([]string, number)
 	for i := 0; i < len(codes); i++ {
 		codeBytes := make([]byte, lenght)
 		if _, err := rand.Read(codeBytes); err != nil {
@@ -79,7 +79,7 @@ func (s *Store) NewBackupCodes(id int, codes []string) error {
 		return err
 	}
 	// Deleting existing backup codes
-	_, err = tx.Exec("DELETE FROM totp_backup WHERE id = ?", id)
+	_, err = tx.Exec("DELETE FROM totp_backup WHERE account = ?", id)
 	if err != nil {
 		tx.Rollback()
 		return err

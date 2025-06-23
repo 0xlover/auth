@@ -97,7 +97,7 @@ func ValidateJSON(w http.ResponseWriter, payload any) map[string]string {
 	return nil
 }
 
-// Hashes a plain text password
+// Hashes plain text values
 func Hash(plain, pepper string, cost int) (string, error) {
 	peppered := plain + pepper
 	hash, err := bcrypt.GenerateFromPassword([]byte(peppered), cost)
@@ -107,7 +107,7 @@ func Hash(plain, pepper string, cost int) (string, error) {
 	return string(hash), nil
 }
 
-// Compares plain text and hashed password
+// Compares plain text and hashed values
 func ComparePlainAndHashedPassword(hashed, pepper string, plain []byte) bool {
 	peppered := string(plain) + pepper
 	err := bcrypt.CompareHashAndPassword([]byte(hashed), []byte(peppered))
