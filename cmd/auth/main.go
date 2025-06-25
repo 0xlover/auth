@@ -164,7 +164,7 @@ func main() {
 		// Protected
 		r.Group(func(r chi.Router) {
 			r.Use(jwtauth.Verifier(tokenAuth))
-			r.Use(jwtauth.Authenticator(tokenAuth))
+			r.Use(JWTAuth(tokenAuth))
 			r.Use(Authenticator(store))
 			r.Post("/logout", handlers.Logout)
 			r.Put("/modify/email", handlers.ChangeEmail)
