@@ -14,7 +14,7 @@ require (
 	github.com/pressly/goose/v3 v3.24.3
 	golang.org/x/crypto v0.38.0
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
-	modernc.org/sqlite v1.37.0
+	modernc.org/sqlite v1.38.0
 )
 
 require (
@@ -50,7 +50,7 @@ require (
 	golang.org/x/sys v0.33.0 // indirect
 	golang.org/x/text v0.25.0 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
-	modernc.org/libc v1.65.0 // indirect
+	modernc.org/libc v1.65.10 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
-	modernc.org/memory v1.10.0 // indirect
+	modernc.org/memory v1.11.0 // indirect
 )
