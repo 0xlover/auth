@@ -4,5 +4,11 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    lables:
+    labels:
       - "dependencies"
+    commit-message:
+      prefix: "chore: "
+    # reviewers:
+    #   - "your-team-name"
+    # open-pull-requests-limit: 10 
+    # rebase-strategy: "disabled"
