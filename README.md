@@ -3,13 +3,17 @@
 
 The perfect tool to use just to "try an **idea** out" before handling authentication in a more scalable manner!
 
+1. [Usage](#usage)
+2. [Screenshots](#documentation)
+3. [Installation](#installation)
+
 ## Features
 * It will always spin up a **local** authentication API, no matter what!
 * Extremely configurable with flags and environment variables.
-* Reliable with embedded sqlite3 migrations.
-* As performant as the chi router allows to handle requests.
+* Portable being a single statically compiled executable with embedded sqlite3 migrations.
+* Fast, some would even say, blazingly fast using the Chi router!
 * Structured JSON responses and beautiful logging.
-* Documented and understandable which truly isn't a given...
+* Documented and curated understandable source code which truly isn't a given...
 * Security first and extensively **audited** for SQL injections, BOLA and more!
 
 ## Usage
@@ -18,6 +22,10 @@ you@computer$ auth
 ```
 ```
 Listening to requests on :6900/api
+```
+Hey, but I need 2FA TOTP!
+```
+you@computer$ auth -t
 ```
 
 Use **flags**(prioritized) and/or **environment variables**(find them in .env.example) to change the program's behaviour!
@@ -57,10 +65,13 @@ Options:
   --version, -v          prints auth's version and exit
   --help, -h             display this help and exit
 ```
-Yes, there might be a lot in here, but it's pretty understandable!
+Yes, there are a LOT of flags in here!
 
 # Documentation
-Other than the code itself please read the reference at /openapi and try endpoints out with your favorite HTTP client.
+Please read the reference that you can find at the /openapi endpoint or read the code!
+
+<img src="./reference.png">
+<img src="./client.png">
 
 ## Installation
 Grab a [release](https://github.com/0xlover/auth/releases) for your architecture and operating system or do it another way.
@@ -75,6 +86,12 @@ go install github.com/0xlover/auth/cmd/auth@latest
 CGO_ENABLED=0 go build -trimpath -ldflags='-s -w -extldflags="-static"' ./cmd/auth/
 ```
 
+### Deploy with Docker
+There's no real need for a Docker Compose files right now, but I will make them after the new release!
+```
+docker build -t 0xlover/auth .
+```
+
 ### Debugging with Delve
 It's an API, so you need to attach to the PID.
 ```
@@ -83,3 +100,6 @@ dlv attach $(pgrep auth)
 
 ## Contributions
 You can check out [TODO](./TODO.md) and these will definitely get accepted after review.
+
+## Future
+Planning PostgreSQL, MySQL support and a lot more including CI/CD!

@@ -16,4 +16,4 @@ release:
 	@GOARCH=arm64 GOOS=openbsd CGO_ENABLED=0 go build -trimpath -ldflags='-s -w -extldflags="-static"' -o build/auth_openbsd_arm64 ./cmd/auth/
 
 clean:
-	@if [ -n $(ls build/* 2>/dev/null) ]; then rm build/*; fi
+	@rm build/* 2>/dev/null || echo "Nothing to do!"

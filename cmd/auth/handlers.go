@@ -828,7 +828,7 @@ func (h *Handlers) OpenAPI(w http.ResponseWriter, r *http.Request) {
 		CustomOptions: scalar.CustomOptions{
 			PageTitle: "auth API v0.1",
 		},
-		Theme:              scalar.ThemeSaturn,
+		Theme:              scalar.ThemeAlternate,
 		DarkMode:           true,
 		HideDownloadButton: true,
 		Layout:             scalar.LayoutModern,
