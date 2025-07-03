@@ -26,7 +26,7 @@ func Connection(path, mode string) (*sql.DB, error) {
 		}
 		file, err := os.Create(path)
 		if err != nil {
-			return nil, fmt.Errorf("error creatine the database %s", err)
+			return nil, fmt.Errorf("error creating the database %s", err)
 		}
 		file.Close()
 	}

@@ -813,11 +813,11 @@ func (h *Handlers) HealthCheck(w http.ResponseWriter, r *http.Request) {
 	utilities.Reply(w, http.StatusOK, "healthy", nil, true)
 }
 
-// BASED /invite
+// BASED /reward
 func (h *Handlers) auth(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Someone found the easter egg")
 	utilities.Reply(w, http.StatusOK, "easter egg found!", map[string]string{
-		"reward": "https://discord.gg/QkEag23CSq",
+		"reward": "Send me an email and let's chat 0xlovergit@gmail.com!",
 	}, true)
 }
 

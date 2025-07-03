@@ -107,11 +107,12 @@ func main() {
 		fmt.Println("Disabling CORS(origins validation failed please provide valid origins)")
 		origins = []string{}
 	}
-	// Setting CORS origins
+	// Registering custom METHOD for the easter egg
 	custom := ""
 	if args.EasterEgg {
 		custom = "BASED"
 	}
+	// Setting CORS origins
 	r.Use(cors.Handler(cors.Options{
 		AllowedOrigins:   origins,
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS", custom},
@@ -158,7 +159,7 @@ func main() {
 			r.Get("/openapi", handlers.OpenAPI)
 			// Easter egg
 			if args.EasterEgg {
-				r.Method("BASED", "/invite", http.HandlerFunc(handlers.auth))
+				r.Method("BASED", "/reward", http.HandlerFunc(handlers.auth))
 			}
 		})
 		// Protected
