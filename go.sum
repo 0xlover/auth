@@ -1,7 +1,7 @@
 github.com/MarceloPetrucio/go-scalar-api-reference v0.0.0-20240521013641-ce5d2efe0e06 h1:W4Yar1SUsPmmA51qoIRb174uDO/Xt3C48MB1YX9Y3vM=
 github.com/MarceloPetrucio/go-scalar-api-reference v0.0.0-20240521013641-ce5d2efe0e06/go.mod h1:/wotfjM8I3m8NuIHPz3S8k+CCYH80EqDT8ZeNLqMQm0=
-github.com/alexflint/go-arg v1.5.1 h1:nBuWUCpuRy0snAG+uIJ6N0UvYxpxA0/ghA/AaHxlT8Y=
-github.com/alexflint/go-arg v1.5.1/go.mod h1:A7vTJzvjoaSTypg4biM5uYNTkJ27SkNTArtYXnlqVO8=
+github.com/alexflint/go-arg v1.6.0 h1:wPP9TwTPO54fUVQl4nZoxbFfKCcy5E6HBCumj1XVRSo=
+github.com/alexflint/go-arg v1.6.0/go.mod h1:A7vTJzvjoaSTypg4biM5uYNTkJ27SkNTArtYXnlqVO8=
 github.com/alexflint/go-scalar v1.2.0 h1:WR7JPKkeNpnYIOfHRa7ivM21aWAdHD0gEWHCx+WQBRw=
 github.com/alexflint/go-scalar v1.2.0/go.mod h1:LoFvNMqS1CPrMVltza4LvnGKhaSpc3oyLEBUZVhhS2o=
 github.com/boombuler/barcode v1.0.1-0.20190219062509-6c824513bacc h1:biVzkmvwrH8WK8raXaxBx6fRVTlJILwEwQGL1I/ByEI=

@@ -3,7 +3,7 @@ module github.com/0xlover/auth
 go 1.24.3
 
 require (
-	github.com/alexflint/go-arg v1.5.1
+	github.com/alexflint/go-arg v1.6.0
 	github.com/go-chi/chi/v5 v5.2.1
 	github.com/go-chi/cors v1.2.2
 	github.com/go-chi/httprate v0.15.0
